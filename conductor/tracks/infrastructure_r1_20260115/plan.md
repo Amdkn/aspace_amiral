@@ -5,9 +5,10 @@
     - [x] Create `01_PROJECTS/infrastructure_r1` directory
     - [x] Setup subdirectories for Supabase and n8n persistent volumes
 - [ ] Task: Draft Docker Compose Configuration
-    - [ ] Define Supabase services (db, kong, auth, rest)
-    - [ ] Define n8n service with persistent volume
-    - [ ] Set up private networking between containers
+- [x] Task: Draft Docker Compose Configuration 314a64f
+    - [x] Define Supabase services (db, kong, auth, rest)
+    - [x] Define n8n service with persistent volume
+    - [x] Set up private networking between containers
 - [ ] Task: TDD - Verify Container Orchestration
     - [ ] Write a script to verify service health (healthcheck)
     - [ ] Launch services and ensure all containers reach "healthy" status
