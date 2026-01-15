@@ -18,10 +18,10 @@
 - [x] Task: Database Schema Initialization 11b1e18
     - [x] Define tables for `pulses` and `system_state`
     - [x] Create SQL migration script
-- [ ] Task: TDD - Verify Schema and Connectivity
-    - [ ] Write a Python test script using `psycopg2` or `supabase-py`
-    - [ ] Verify R0 can connect to Supabase via the private network
-    - [ ] Verify CRUD operations on the `pulses` table
+- [x] Task: TDD - Verify Schema and Connectivity 4df35c1
+    - [x] Write a Python test script using `psycopg2` or `supabase-py`
+    - [x] Verify R0 can connect to Supabase via the private network
+    - [x] Verify CRUD operations on the `pulses` table
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Sovereign Memory' (Protocol in workflow.md) [checkpoint: ]
 
 ## Phase 3: Autonomous Workflow (n8n) Integration
