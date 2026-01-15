@@ -12,10 +12,10 @@
 - [x] Task: TDD - Verify Container Orchestration f1c369d
     - [x] Write a script to verify service health (healthcheck)
     - [x] Launch services and ensure all containers reach "healthy" status
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Docker Environment' (Protocol in workflow.md) [checkpoint: ]
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Docker Environment' (Protocol in workflow.md) [checkpoint: f8b65a2]
 
 ## Phase 2: Sovereign Memory (Supabase) Setup
-- [ ] Task: Database Schema Initialization
+- [~] Task: Database Schema Initialization
     - [ ] Define tables for `pulses` and `system_state`
     - [ ] Create SQL migration script
 - [ ] Task: TDD - Verify Schema and Connectivity
