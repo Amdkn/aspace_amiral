@@ -1,0 +1,24 @@
+{
+    "agent_profile": {
+        "name": "Amiral's Conductor",
+        "role": "Orchestrator",
+        "description": "Le Chef de Chantier. Centralise les ordres et délègue à Ralph."
+    },
+    "market_place": {
+        "extensions": [
+            {
+                "name": "Conductor",
+                "source": "gemini-cli-extensions/conductor",
+                "purpose": "ORCHESTRATION (The Boss)"
+            },
+            {
+                "name": "Ralph Loop",
+                "source": "kranthik123/Gemini-Ralph-Loop",
+                "purpose": "EXECUTION (The Worker)"
+            }
+        ]
+    },
+    "context": {
+        "root": "C:/Users/amado/Documents/A'Space OS/00_Amiral"
+    }
+}
