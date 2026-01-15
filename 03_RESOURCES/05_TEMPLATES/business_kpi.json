@@ -21,6 +21,36 @@
             "timestamp": "2026-01-15T05:54:30.690397",
             "metric": "manual_verification",
             "value": 100
+        },
+        {
+            "timestamp": "2026-01-15T05:55:53.651784",
+            "metric": "test",
+            "value": 10.0
+        },
+        {
+            "timestamp": "2026-01-15T06:00:21.123227",
+            "metric": "manual_cli_test",
+            "value": 123.45
+        },
+        {
+            "timestamp": "2026-01-15T01:01:07.142328",
+            "metric": "manual_cli_test",
+            "value": 123.45
+        },
+        {
+            "timestamp": "2026-01-15T01:01:12.389562",
+            "metric": "revenue",
+            "value": 500.0
+        },
+        {
+            "timestamp": "2026-01-15T06:03:56.442387",
+            "metric": "manual_cli_test",
+            "value": 123.45
+        },
+        {
+            "timestamp": "2026-01-15T06:04:30.836131",
+            "metric": "revenue",
+            "value": 500.0
         }
     ]
 }
