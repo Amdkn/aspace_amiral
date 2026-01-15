@@ -33,5 +33,28 @@ class TestPulseLogger(unittest.TestCase):
         self.assertEqual(last_pulse["value"], value)
         self.assertIn("timestamp", last_pulse)
 
+    def test_log_pulse_concurrency(self):
+        import threading
+        
+        def log_worker(i):
+            log_pulse(f"concurrent_metric_{i}", i)
+            
+        threads = []
+        num_threads = 10
+        for i in range(num_threads):
+            t = threading.Thread(target=log_worker, args=(i,))
+            threads.append(t)
+            t.start()
+            
+        for t in threads:
+            t.join()
+            
+        with open(self.test_file, 'r') as f:
+            data = json.load(f)
+            
+        metrics = [p["metric"] for p in data["pulses"]]
+        for i in range(num_threads):
+            self.assertIn(f"concurrent_metric_{i}", metrics)
+
 if __name__ == "__main__":
     unittest.main()
