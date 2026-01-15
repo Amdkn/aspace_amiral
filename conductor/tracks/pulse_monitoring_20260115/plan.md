@@ -10,8 +10,8 @@
 
 ## Phase 2: Integration & CLI Entry
 - [x] Task: Create `pulse` CLI command wrapper 39ea61c
-- [~] Task: TDD - Integration tests for JSON file appending
-    - [ ] Write failing tests for file I/O safety
-    - [ ] Implement file lock/append logic
-    - [ ] Refactor and verify >80% coverage
+- [x] Task: TDD - Integration tests for JSON file appending a710612
+    - [x] Write failing tests for file I/O safety
+    - [x] Implement file lock/append logic
+    - [x] Refactor and verify >80% coverage
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Integration' (Protocol in workflow.md) [checkpoint: ]
