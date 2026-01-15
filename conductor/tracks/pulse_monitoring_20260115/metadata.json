@@ -1,8 +1,0 @@
-{
-    "description":  "Initialize the Pulse Monitoring System: Implement core logic for capturing business KPIs and logging them into business_kpi.json.",
-    "track_id":  "pulse_monitoring_20260115",
-    "type":  "feature",
-    "created_at":  "2026-01-15T00:18:39Z",
-    "status":  "new",
-    "updated_at":  "2026-01-15T00:18:39Z"
-}
