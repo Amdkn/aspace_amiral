@@ -10,5 +10,17 @@
     "life_os": {
         "agent_mood": "Focus",
         "system_integrity": "Optimal"
-    }
+    },
+    "pulses": [
+        {
+            "timestamp": "2026-01-15T00:51:26.090679",
+            "metric": "manual_verification",
+            "value": 100
+        },
+        {
+            "timestamp": "2026-01-15T05:54:30.690397",
+            "metric": "manual_verification",
+            "value": 100
+        }
+    ]
 }

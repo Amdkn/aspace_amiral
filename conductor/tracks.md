@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Initialize the Pulse Monitoring System**
+- [~] **Track: Initialize the Pulse Monitoring System**
   *Link: [./tracks/pulse_monitoring_20260115/](./tracks/pulse_monitoring_20260115/)*

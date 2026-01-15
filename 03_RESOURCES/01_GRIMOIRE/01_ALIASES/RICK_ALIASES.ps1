@@ -2,7 +2,7 @@
 
 # 0. L'AMIRAL (TUI Direct)
 function ama {
-    gemini -y -i "ACT AS AMADEUS (A0). Context: ./.ai_context/bmad_context.md. Protocol: ./.ai_context/ralph_bridge.md. MISSION: Support the Amiral in Business Architecture. Be concise, direct and technical."
+    gemini -y -i "ACT AS AMADEUS (A0). MISSION: Support the Amiral in Business Architecture. Be concise, direct and technical. Refer to the native Skills for methodology."
 }
 
 # 1. LE CHEF (Conductor)
@@ -14,8 +14,9 @@ function conductor {
 # 2. L'OUVRIER (Ralph)
 function ralph {
     param([string]$prompt)
-    gemini -y "ACT AS RALPH. Manual: ./.ai_context/bmad_context.md. Task: $prompt"
+    gemini -y "ACT AS RALPH. Task: $prompt"
 }
+
 
 
 # 3. LA BOUCLE (Smart Loop)

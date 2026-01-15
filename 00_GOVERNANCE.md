@@ -46,14 +46,14 @@ Le système ne fonctionne plus par "Boucle Autonome" aveugle, mais par **Signal 
     *   `Filesystem` : Accès total au repository.
     *   `Browser` : Recherche et analyse web.
     *   `Docker` : Pipeline vers R1 (En cours de reconnexion).
-*   **Skills Internes** : Localisés dans `./.ai_context/` pour une visibilité immédiate par le Technicien.
+*   **Skills Natives** : Localisés dans `.gemini/skills/` pour une intégration automatique par Gemini CLI.
 
 ---
 
 ## 📜 PROTOCOLE D'ACCUEIL (Pour une nouvelle IA)
 1. Lire `00_GOVERNANCE.md` (Ce fichier).
 2. Lire `tracks.md` (État des tâches).
-3. Vérifier les Skills dans `./.ai_context/`.
+3. Vérifier les Skills Natives dans `.gemini/skills/`.
 4. Attendre les signaux de l'Amiral ou du Manager.
 
 ## 🛠️ RÈGLES D'ENGAGEMENT TECHNIQUE (Fallback)
