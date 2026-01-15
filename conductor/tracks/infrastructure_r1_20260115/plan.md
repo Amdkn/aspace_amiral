@@ -25,13 +25,13 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Sovereign Memory' (Protocol in workflow.md) [checkpoint: 6ffa402]
 
 ## Phase 3: Autonomous Workflow (n8n) Integration
-- [~] Task: n8n Configuration & Pulse Workflow
-    - [ ] Setup n8n initial credentials via CLI or config
-    - [ ] Create the "Pulse Forwarding" workflow (Webhook -> Supabase Insert)
-- [ ] Task: TDD - End-to-End Pulse Sync
-    - [ ] Write a test script in R0 that sends a mock pulse to the n8n webhook
-    - [ ] Verify the pulse is correctly recorded in the Supabase database
-- [ ] Task: Implement Backup Script
-    - [ ] Create a shell/python script for database and workflow exports
-    - [ ] Verify backup integrity
+- [x] Task: n8n Configuration & Pulse Workflow 4e73334
+    - [x] Setup n8n initial credentials via CLI or config
+    - [x] Create the "Pulse Forwarding" workflow (Webhook -> Supabase Insert)
+- [x] Task: TDD - End-to-End Pulse Sync 4e73334
+    - [x] Write a test script in R0 that sends a mock pulse to the n8n webhook
+    - [x] Verify the pulse is correctly recorded in the Supabase database
+- [x] Task: Implement Backup Script 4e73334
+    - [x] Create a shell/python script for database and workflow exports
+    - [x] Verify backup integrity
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Integration' (Protocol in workflow.md) [checkpoint: ]
