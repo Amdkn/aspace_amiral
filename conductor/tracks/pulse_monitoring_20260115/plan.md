@@ -6,7 +6,7 @@
     - [x] Write failing tests for `log_pulse` function
     - [x] Implement `log_pulse` to pass tests
     - [x] Refactor and verify >80% coverage
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation' (Protocol in workflow.md) [checkpoint: ]
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation' (Protocol in workflow.md) [checkpoint: c882944]
 
 ## Phase 2: Integration & CLI Entry
 - [ ] Task: Create `pulse` CLI command wrapper
