@@ -22,10 +22,10 @@
     - [x] Write a Python test script using `psycopg2` or `supabase-py`
     - [x] Verify R0 can connect to Supabase via the private network
     - [x] Verify CRUD operations on the `pulses` table
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Sovereign Memory' (Protocol in workflow.md) [checkpoint: ]
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Sovereign Memory' (Protocol in workflow.md) [checkpoint: 6ffa402]
 
 ## Phase 3: Autonomous Workflow (n8n) Integration
-- [ ] Task: n8n Configuration & Pulse Workflow
+- [~] Task: n8n Configuration & Pulse Workflow
     - [ ] Setup n8n initial credentials via CLI or config
     - [ ] Create the "Pulse Forwarding" workflow (Webhook -> Supabase Insert)
 - [ ] Task: TDD - End-to-End Pulse Sync
