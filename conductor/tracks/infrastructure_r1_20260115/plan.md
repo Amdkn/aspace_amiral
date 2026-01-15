@@ -15,9 +15,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Docker Environment' (Protocol in workflow.md) [checkpoint: f8b65a2]
 
 ## Phase 2: Sovereign Memory (Supabase) Setup
-- [~] Task: Database Schema Initialization
-    - [ ] Define tables for `pulses` and `system_state`
-    - [ ] Create SQL migration script
+- [x] Task: Database Schema Initialization 11b1e18
+    - [x] Define tables for `pulses` and `system_state`
+    - [x] Create SQL migration script
 - [ ] Task: TDD - Verify Schema and Connectivity
     - [ ] Write a Python test script using `psycopg2` or `supabase-py`
     - [ ] Verify R0 can connect to Supabase via the private network
