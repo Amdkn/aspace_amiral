@@ -1,0 +1,8 @@
+{
+  "track_id": "beth_jerry_liaison_20260115",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-01-15T09:00:00Z",
+  "updated_at": "2026-01-15T09:00:00Z",
+  "description": "E-Myth Analyst: Système de liaison Beth/Jerry. Configurer n8n (Beth) pour auditer les pulses et classer la valeur métier dans Supabase (Jerry) selon le Canon S1/S2."
+}
