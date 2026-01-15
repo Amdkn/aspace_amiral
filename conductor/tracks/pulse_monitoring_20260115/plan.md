@@ -9,8 +9,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation' (Protocol in workflow.md) [checkpoint: 4a4d799]
 
 ## Phase 2: Integration & CLI Entry
-- [ ] Task: Create `pulse` CLI command wrapper
-- [ ] Task: TDD - Integration tests for JSON file appending
+- [x] Task: Create `pulse` CLI command wrapper 39ea61c
+- [~] Task: TDD - Integration tests for JSON file appending
     - [ ] Write failing tests for file I/O safety
     - [ ] Implement file lock/append logic
     - [ ] Refactor and verify >80% coverage
