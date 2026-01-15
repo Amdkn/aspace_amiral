@@ -1,0 +1,66 @@
+{
+  "name": "Pulse Forwarding",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pulse",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8nio.nodes.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ],
+      "webhookId": "pulse-webhook"
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "schema": "public",
+        "table": "pulses",
+        "columns": "metric,value",
+        "values": {
+          "field": [
+            {
+              "column": "metric",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"metric\"]}}"
+            },
+            {
+              "column": "value",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"value\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Postgres",
+      "type": "n8nio.nodes.postgres",
+      "typeVersion": 1,
+      "position": [
+        350,
+        300
+      ],
+      "credentials": {
+        "postgres": "LocalPostgres"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "id": "1"
+}
