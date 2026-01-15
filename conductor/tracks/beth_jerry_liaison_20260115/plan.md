@@ -3,7 +3,7 @@
 Implementation of the n8n-based bridge between Beth (Life OS) and Jerry (Business OS) with Supabase persistence and Veto logic.
 
 ## Phase 1: Infrastructure & Schema [phase:design]
-- [~] Task: Supabase - Initialize Schema
+- [x] Task: Supabase - Initialize Schema 49f41b0
     - [ ] Create `kpi_metrics` table for numerical pulse data.
     - [ ] Create `agent_signals` table for qualitative/textual alerts.
     - [ ] Create `system_state` table to track the "Beth Veto" status (🟢/🟡/🔴).
