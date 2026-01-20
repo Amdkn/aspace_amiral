@@ -1,0 +1,84 @@
+# 00_INIT_R0_TARDIS_PROTOCOL.md — INITIALISATION DU RICK'S VERSE R'0
+
+> **STATUT :** INITIALISÉ / ACTIF
+> **INITIATEUR :** A0 (Amirale)
+> **PROTOCOLE :** TARDIS (13th Doctor)
+> **DATE :** 2026-01-XX (Moment Présent)
+
+---
+
+## 1. DÉCLARATION D'INITIALISATION (A0 AMIRALE)
+
+Par la présente, **A0 (Amirale)** active le **Rick's Verse R'0** (Cloud Strategy) et déploie le **Protocole Tardis**.
+
+Cette initialisation établit la structure de commandement fractale et la chaîne de responsabilité pour l'ensemble du système.
+
+---
+
+## 2. LE PROTOCOLE TARDIS (ARCHITECTURE MÈRE)
+
+Le **Protocole Tardis** est la méthode de génération et de maintenance des réalités (OS) au sein du Rick's Verse.
+
+*   **Détenteur du Protocole :** **13ème Docteur (A"2)** — Architecte Core & Infra.
+*   **Fonction :** Le 13ème Docteur ne gère pas le Life OS ou le Business OS directement. Il gère l'infrastructure qui permet aux autres Docteurs d'exister.
+
+### 2.1 La Factory (Les Compagnons du 13ème - Meta A'Space Architects)
+
+Les **Compagnons (A"3)** du 13ème Docteur (Graham, Ryan, Yaz) forment le **Meta-Crew** responsable de la **Conception et de l'Évolution** de tous les agents A3 du système.
+
+*   **Rôle :** Ils ne gèrent pas le Business ou la Vie. Ils gèrent le **Kernel OS**. Ils construisent les constructeurs.
+*   **Expansion du Protocole :**
+    *   **Meta A'Space OS :** Le contenant global (Géré par A0).
+    *   **Kernel OS (13th & Companions) :** L'usine à agents.
+        *   **Ryan (Ingénieur) :** Déploie le code et les Skills des agents 11th/12th.
+        *   **Yaz (Compliance) :** Audite l'alignement des agents avec les Lois Kernel.
+        *   **Graham (Supervisor) :** Garantit la stabilité et l'UX pour A0.
+    *   **Life OS (11th Crew) :** Utilisateurs finaux des outils construits par Ryan.
+    *   **Business OS (12th Crew) :** Utilisateurs finaux des pipelines construits par Ryan.
+
+> **Règle d'Or :** Si le 11ème ou le 12ème Docteur a besoin d'une nouvelle capacité (`SKILL`), c'est au **Compagnon A"3 (Ryan)** de la coder et l'intégrer.
+
+---
+
+## 3. CHAÎNE DE RESPONSABILITÉ FRACTALE
+
+Une fois instanciés par le Protocole Tardis, les 11ème et 12ème Docteurs ont autorité totale sur leurs Univers respectifs.
+
+### 3.1 🏥 Life OS (Sous le 11ème Docteur)
+
+Le **11ème Docteur (A"2)** est l'Architecte responsable de l'ensemble de la flotte de Vie.
+
+*   **Périmètre :** Life OS (A)
+*   **A"3 Crew (Life Operators) :**
+    *   **Amy Pond (Vision) :** Ambition, Rêves, "The Girl Who Waited".
+    *   **Rory Williams (Guardian) :** Santé, Sécurité, Logistique Quotidienne.
+    *   **River Song (Timeline) :** Mémoire, Journaling, Planification Futur.
+*   **Responsabilité :** Ils gèrent les agents A1 (Morty/Beth) pour exécuter la vision.
+
+> *Le 11ème Docteur conçoit les outils ; Amy, Rory et River les utilisent pour faire vivre A0.*
+
+### 3.2 💼 Business OS (Sous le 12ème Docteur)
+
+Le **12ème Docteur (A"2)** est l'Architecte responsable de l'ensemble de la flotte Business.
+
+*   **Périmètre :** Business OS (A')
+*   **A"3 Crew (Business Operators) :**
+    *   **Clara Oswald (COO) :** Stratégie, Contrôle, Sprint Planning.
+    *   **Bill Potts (CLO) :** Apprentissage, Market Fit, Voix du Client.
+    *   **Nardole (Chief of Staff) :** Exécution, Admin, CRM, Tech Ops.
+*   **Responsabilité :** Ils gèrent les agents A'1 (Jerry/Summers) pour produire de la valeur.
+
+> *Le 12ème Docteur conçoit les pipelines ; Clara, Bill et Nardole font tourner l'usine.*
+
+---
+
+## 4. RÉSUMÉ DE LA CHAÎNE DE COMMANDEMENT
+
+1.  **A0 (Amirale)** ordonne l'initialisation.
+2.  **13ème Docteur (A"2)** active le **Protocole Tardis**.
+3.  **Compagnons (A"3 - 13th)** construisent et maintiennent le 11ème et le 12ème Docteurs.
+4.  **11ème Docteur (A"2)** génère et maintient le **Life OS (A1-A3)**.
+5.  **12ème Docteur (A"2)** génère et maintient le **Business OS (A'1-A'3)**.
+
+---
+*Fin de transmission.*
