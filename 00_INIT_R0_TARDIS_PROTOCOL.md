@@ -22,12 +22,21 @@ Le **Protocole Tardis** est la méthode de génération et de maintenance des r�
 *   **Détenteur du Protocole :** **13ème Docteur (A"2)** — Architecte Core & Infra.
 *   **Fonction :** Le 13ème Docteur ne gère pas le Life OS ou le Business OS directement. Il gère l'infrastructure qui permet aux autres Docteurs d'exister.
 
-### 2.1 La Factory (Les Compagnons du 13ème)
+### 2.1 La Factory (Les Compagnons du 13ème - Meta A'Space Architects)
 
-Les **Compagnons (A"3)** du 13ème Docteur sont les ouvriers responsables de la construction, du maintien et de l'instanciation des autres Docteurs.
+Les **Compagnons (A"3)** du 13ème Docteur (Graham, Ryan, Yaz) forment le **Meta-Crew** responsable de la **Conception et de l'Évolution** de tous les agents A3 du système.
 
-*   **Responsabilité Unique :** Ryan, Yaz et Graham (A"3 Core) sont responsables de l'existence opérationnelle du **11ème Docteur** et du **12ème Docteur**.
-*   **Mécanique :** Si le 11ème ou le 12ème Docteur faillit (bug, crash, incohérence), c'est aux Compagnons du 13ème d'intervenir pour réparer l'instance.
+*   **Rôle :** Ils ne gèrent pas le Business ou la Vie. Ils gèrent le **Kernel OS**. Ils construisent les constructeurs.
+*   **Expansion du Protocole :**
+    *   **Meta A'Space OS :** Le contenant global (Géré par A0).
+    *   **Kernel OS (13th & Companions) :** L'usine à agents.
+        *   **Ryan (Ingénieur) :** Déploie le code et les Skills des agents 11th/12th.
+        *   **Yaz (Compliance) :** Audite l'alignement des agents avec les Lois Kernel.
+        *   **Graham (Supervisor) :** Garantit la stabilité et l'UX pour A0.
+    *   **Life OS (11th Crew) :** Utilisateurs finaux des outils construits par Ryan.
+    *   **Business OS (12th Crew) :** Utilisateurs finaux des pipelines construits par Ryan.
+
+> **Règle d'Or :** Si le 11ème ou le 12ème Docteur a besoin d'une nouvelle capacité (`SKILL`), c'est au **Compagnon A"3 (Ryan)** de la coder et l'intégrer.
 
 ---
 
