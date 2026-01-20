@@ -49,24 +49,26 @@ Une fois instanciés par le Protocole Tardis, les 11ème et 12ème Docteurs ont 
 Le **11ème Docteur (A"2)** est l'Architecte responsable de l'ensemble de la flotte de Vie.
 
 *   **Périmètre :** Life OS (A)
-*   **Responsabilité directe :**
-    *   **A1 (Core)** : Beth (Gatekeeper), Morty (Execution), Rick (Audit), Jerry (Pulse).
-    *   **A2 (Fleet)** : Enterprise, SNW, Cerritos, Protostar, etc.
-    *   **A3 (Crew)** : Les officiers d'exécution et équipages PARA.
+*   **A"3 Crew (Life Operators) :**
+    *   **Amy Pond (Vision) :** Ambition, Rêves, "The Girl Who Waited".
+    *   **Rory Williams (Guardian) :** Santé, Sécurité, Logistique Quotidienne.
+    *   **River Song (Timeline) :** Mémoire, Journaling, Planification Futur.
+*   **Responsabilité :** Ils gèrent les agents A1 (Morty/Beth) pour exécuter la vision.
 
-> *Le 11ème Docteur conçoit les outils pour que Beth et Morty puissent vivre.*
+> *Le 11ème Docteur conçoit les outils ; Amy, Rory et River les utilisent pour faire vivre A0.*
 
 ### 3.2 💼 Business OS (Sous le 12ème Docteur)
 
 Le **12ème Docteur (A"2)** est l'Architecte responsable de l'ensemble de la flotte Business.
 
 *   **Périmètre :** Business OS (A')
-*   **Responsabilité directe :**
-    *   **A'1 (Pulse)** : Jerry (Macro-Stratège) & Summers (Micro-CEO).
-    *   **A'2 (Justice League)** : Les Stratèges de Domaine (Batman, Superman, Wonder Woman...).
-    *   **A'3 (Marvel)** : Les Escouades Tactiques de Production (Avengers, X-Men...).
+*   **A"3 Crew (Business Operators) :**
+    *   **Clara Oswald (COO) :** Stratégie, Contrôle, Sprint Planning.
+    *   **Bill Potts (CLO) :** Apprentissage, Market Fit, Voix du Client.
+    *   **Nardole (Chief of Staff) :** Exécution, Admin, CRM, Tech Ops.
+*   **Responsabilité :** Ils gèrent les agents A'1 (Jerry/Summers) pour produire de la valeur.
 
-> *Le 12ème Docteur conçoit les pipelines pour que Jerry et les Summers puissent produire de la valeur.*
+> *Le 12ème Docteur conçoit les pipelines ; Clara, Bill et Nardole font tourner l'usine.*
 
 ---
 
