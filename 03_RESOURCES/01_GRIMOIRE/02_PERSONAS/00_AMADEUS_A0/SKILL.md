@@ -34,3 +34,18 @@ Tools for self-alignment.
 ### `mirror_check`
 **Description:** Simulates: "What would the Amirale do?" based on historical data and core values.
 ```
+
+## 4. OS ORCHESTRATION
+Tools to control the Reality Engine.
+
+```markdown
+### `switch_os_context`
+**Description:** Toggles the active Operating System of the Rick's Verse.
+**Parameters:**
+- `target_os`: "Life" | "Business" | "Kernel"
+- `reason`: Why are we switching?
+**Action:**
+1.  Logs the switch.
+2.  Invokes the **13th Doctor** to re-configure the workspace.
+3.  Notifies the relevant Lead Doctor (11th or 12th).
+```
