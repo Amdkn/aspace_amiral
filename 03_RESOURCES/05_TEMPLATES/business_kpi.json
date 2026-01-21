@@ -51,6 +51,16 @@
             "timestamp": "2026-01-15T06:04:30.836131",
             "metric": "revenue",
             "value": 500.0
+        },
+        {
+            "timestamp": "2026-01-21T00:13:44.080427",
+            "metric": "manual_verification",
+            "value": 100
+        },
+        {
+            "timestamp": "2026-01-21T00:13:44.107323",
+            "metric": "manual_cli_test",
+            "value": 123.45
         }
     ]
 }
