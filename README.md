@@ -24,10 +24,26 @@ Ce dépôt utilise un **Agent d'implémentation de PR** automatisé pour gérer 
 - ✅ **Labels dynamiques** : Classification automatique des PRs
 - ✅ **Déploiement** : Validation Docker et préparation VPS
 
+### 🛡️ Framework Antifragilité
+
+Le projet intègre maintenant un **Framework Antifragilité** complet pour transformer les contraintes et perturbations en opportunités d'amélioration.
+
+**Ressources disponibles :**
+- 📚 [Documentation Complète](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/)
+- 📋 [Template PR Antifragile](./.github/PULL_REQUEST_TEMPLATE/antifragile_pr_template.md)
+- 🎯 [Exemples Pratiques](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/05_EXAMPLES.md)
+
+**Principes clés :**
+- Découpage en mini-PRs (< 300 lignes)
+- Feature flags pour déploiements progressifs
+- Tests de résilience (chaos engineering)
+- Monitoring et rollback automatiques
+
 ### Pour contribuer
 1. Consultez [CONTRIBUTING.md](./CONTRIBUTING.md) pour les conventions
 2. Créez votre branche depuis `develop`
 3. Suivez le format **Conventional Commits**
-4. L'agent validera automatiquement votre PR
+4. Pour les PRs critiques, utilisez le [Template Antifragile](./.github/PULL_REQUEST_TEMPLATE/antifragile_pr_template.md)
+5. L'agent validera automatiquement votre PR
 
 📚 **Documentation complète** : [.github/PR_INTEGRATION_AGENT.md](./.github/PR_INTEGRATION_AGENT.md)
