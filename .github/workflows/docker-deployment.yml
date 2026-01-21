@@ -18,9 +18,6 @@ jobs:
   validate-docker:
     name: Validate Docker Configuration
     runs-on: ubuntu-latest
-    if: |
-      contains(github.event.pull_request.changed_files, 'Dockerfile') ||
-      contains(github.event.pull_request.changed_files, 'docker-compose')
     
     steps:
       - name: Checkout repository
@@ -60,11 +57,14 @@ jobs:
       - name: Validate Docker Compose files
         if: steps.check-docker.outputs.has_docker == 'true'
         run: |
-          if [ -n "${{ steps.check-docker.outputs.compose_files }}" ]; then
+          COMPOSE_FILES="${{ steps.check-docker.outputs.compose_files }}"
+          if [ -n "$COMPOSE_FILES" ]; then
             echo "Validating Docker Compose files..."
-            for compose_file in ${{ steps.check-docker.outputs.compose_files }}; do
-              echo "Checking $compose_file..."
-              docker-compose -f "$compose_file" config > /dev/null || echo "::warning::Issues found in $compose_file"
+            echo "$COMPOSE_FILES" | while IFS= read -r compose_file; do
+              if [ -n "$compose_file" ]; then
+                echo "Checking $compose_file..."
+                docker-compose -f "$compose_file" config > /dev/null || echo "::warning::Issues found in $compose_file"
+              fi
             done
           fi
 

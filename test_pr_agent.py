@@ -61,13 +61,22 @@ def test_pyproject_toml():
     print("\n🔍 Testing pyproject.toml...")
     
     try:
-        import toml
-        with open('pyproject.toml', 'r') as f:
-            toml.load(f)
+        # Try tomllib first (Python 3.11+)
+        try:
+            import tomllib
+            with open('pyproject.toml', 'rb') as f:
+                tomllib.load(f)
+        except ImportError:
+            # Fall back to toml for older Python versions
+            try:
+                import toml
+                with open('pyproject.toml', 'r') as f:
+                    toml.load(f)
+            except ImportError:
+                print("⚠️  Neither tomllib nor toml module available, skipping validation")
+                return True
+        
         print("✅ Valid pyproject.toml")
-        return True
-    except ImportError:
-        print("⚠️  toml module not installed, skipping validation")
         return True
     except Exception as e:
         print(f"❌ Invalid pyproject.toml: {e}")
