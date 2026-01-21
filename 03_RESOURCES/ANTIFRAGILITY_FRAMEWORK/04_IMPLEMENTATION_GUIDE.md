@@ -586,13 +586,16 @@ volumes:
 ```
 
 #### Configuration GitHub Actions
+
+**Note** : Cette configuration utilise les branches `develop` et `main` selon la structure définie dans [CONTRIBUTING.md](../../../CONTRIBUTING.md). Ajustez selon la structure de branches de votre projet.
+
 ```yaml
 # .github/workflows/sonarqube.yml
 name: SonarQube Analysis
 
 on:
   pull_request:
-    branches: [develop, main]
+    branches: [develop, main]  # Ajustez selon vos branches principales
   push:
     branches: [develop, main]
 

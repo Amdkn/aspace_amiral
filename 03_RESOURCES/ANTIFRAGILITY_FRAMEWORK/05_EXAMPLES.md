@@ -84,6 +84,10 @@ class PaymentServiceInterface(ABC):
 
 #### 3. Code Exemple : Adapter avec Résilience
 
+**Note** : Cet exemple requiert les dépendances suivantes :
+- `stripe` - SDK Stripe officiel
+- Modules internes : `circuit_breaker`, `logging` (implémentations fournies plus loin)
+
 ```python
 # payment/stripe_adapter.py
 import stripe
@@ -92,7 +96,7 @@ import random
 from typing import Optional
 from decimal import Decimal
 from .interfaces import PaymentServiceInterface, PaymentResult
-from .circuit_breaker import CircuitBreaker
+from .circuit_breaker import CircuitBreaker  # Voir implémentation section "Circuit Breaker"
 from .logging import get_logger
 
 logger = get_logger(__name__)
