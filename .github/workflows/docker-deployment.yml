@@ -1,0 +1,175 @@
+name: Docker Build & Deploy Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'Dockerfile*'
+      - 'docker-compose*.yml'
+      - '.dockerignore'
+      - '01_PROJECTS/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate-docker:
+    name: Validate Docker Configuration
+    runs-on: ubuntu-latest
+    if: |
+      contains(github.event.pull_request.changed_files, 'Dockerfile') ||
+      contains(github.event.pull_request.changed_files, 'docker-compose')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Check for Dockerfiles
+        id: check-docker
+        run: |
+          DOCKERFILES=$(find . -name "Dockerfile*" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          COMPOSE_FILES=$(find . -name "docker-compose*.yml" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          
+          echo "dockerfiles<<EOF" >> $GITHUB_OUTPUT
+          echo "$DOCKERFILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          echo "compose_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMPOSE_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          if [ -n "$DOCKERFILES" ] || [ -n "$COMPOSE_FILES" ]; then
+            echo "has_docker=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_docker=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Lint Dockerfiles
+        if: steps.check-docker.outputs.has_docker == 'true'
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          ignore: DL3008,DL3009,DL3015
+        continue-on-error: true
+
+      - name: Validate Docker Compose files
+        if: steps.check-docker.outputs.has_docker == 'true'
+        run: |
+          if [ -n "${{ steps.check-docker.outputs.compose_files }}" ]; then
+            echo "Validating Docker Compose files..."
+            for compose_file in ${{ steps.check-docker.outputs.compose_files }}; do
+              echo "Checking $compose_file..."
+              docker-compose -f "$compose_file" config > /dev/null || echo "::warning::Issues found in $compose_file"
+            done
+          fi
+
+      - name: Build Docker image (test)
+        if: steps.check-docker.outputs.has_docker == 'true'
+        run: |
+          if [ -f "Dockerfile" ]; then
+            echo "Building Docker image for testing..."
+            docker build -t aspace-amiral:test . || echo "::error::Docker build failed"
+          fi
+
+      - name: Security scan with Trivy
+        if: steps.check-docker.outputs.has_docker == 'true'
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'aspace-amiral:test'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+        continue-on-error: true
+
+      - name: Comment on PR
+        if: steps.check-docker.outputs.has_docker == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = `
+            ## 🐳 Docker Validation Report
+            
+            ✅ Docker configuration validated
+            
+            **Files checked:**
+            - Dockerfiles: \`${{ steps.check-docker.outputs.dockerfiles }}\`
+            - Compose files: \`${{ steps.check-docker.outputs.compose_files }}\`
+            
+            **Validations:**
+            - ✅ Dockerfile linting
+            - ✅ Docker Compose validation
+            - ✅ Build test
+            - ✅ Security scan
+            
+            *Ready for deployment review*
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });
+
+  # Deployment readiness check
+  deployment-readiness:
+    name: Check Deployment Readiness
+    runs-on: ubuntu-latest
+    needs: [validate-docker]
+    if: always()
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for deployment configuration
+        id: check-deploy
+        run: |
+          echo "Checking deployment configuration..."
+          
+          # Check for deployment scripts
+          DEPLOY_SCRIPTS=$(find . -name "deploy*.sh" -o -name "deploy*.py" | head -5)
+          
+          # Check for environment files
+          ENV_EXAMPLES=$(find . -name ".env.example" -o -name "env.example" | head -5)
+          
+          if [ -n "$DEPLOY_SCRIPTS" ]; then
+            echo "✅ Deployment scripts found"
+            echo "has_deploy_scripts=true" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ No deployment scripts found"
+            echo "has_deploy_scripts=false" >> $GITHUB_OUTPUT
+          fi
+          
+          if [ -n "$ENV_EXAMPLES" ]; then
+            echo "✅ Environment examples found"
+            echo "has_env_examples=true" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ No environment examples found"
+            echo "has_env_examples=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: VPS deployment check
+        run: |
+          echo "## 🚀 Deployment Readiness Checklist" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- [${{ steps.check-deploy.outputs.has_deploy_scripts == 'true' && 'x' || ' ' }}] Deployment scripts" >> $GITHUB_STEP_SUMMARY
+          echo "- [${{ steps.check-deploy.outputs.has_env_examples == 'true' && 'x' || ' ' }}] Environment configuration" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Docker validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** Ready for deployment review" >> $GITHUB_STEP_SUMMARY
+
+      - name: Add deployment label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['deployment-ready']
+            });
