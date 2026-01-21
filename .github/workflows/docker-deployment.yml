@@ -63,7 +63,10 @@ jobs:
             echo "$COMPOSE_FILES" | while IFS= read -r compose_file; do
               if [ -n "$compose_file" ]; then
                 echo "Checking $compose_file..."
-                docker-compose -f "$compose_file" config > /dev/null || echo "::warning::Issues found in $compose_file"
+                # Try docker compose V2 first, fallback to docker-compose V1
+                docker compose -f "$compose_file" config > /dev/null 2>&1 || \
+                docker-compose -f "$compose_file" config > /dev/null || \
+                echo "::warning::Issues found in $compose_file"
               fi
             done
           fi
@@ -78,7 +81,7 @@ jobs:
 
       - name: Security scan with Trivy
         if: steps.check-docker.outputs.has_docker == 'true'
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: 'aspace-amiral:test'
           format: 'sarif'
