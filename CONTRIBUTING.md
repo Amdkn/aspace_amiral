@@ -2,6 +2,8 @@
 
 Bienvenue ! Ce guide décrit comment contribuer efficacement à ce dépôt.
 
+> 🛡️ **Nouveau** : Ce projet suit maintenant un **Framework Antifragilité** pour transformer les contraintes en opportunités d'amélioration. Consultez [03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/) pour plus de détails.
+
 ## 🚀 Quick Start
 
 1. **Fork** le dépôt
@@ -9,7 +11,7 @@ Bienvenue ! Ce guide décrit comment contribuer efficacement à ce dépôt.
 3. Créez une **branche** pour votre travail
 4. **Committez** vos changements
 5. **Push** vers votre fork
-6. Ouvrez une **Pull Request**
+6. Ouvrez une **Pull Request** (utilisez le template antifragile pour les PRs critiques)
 
 ## 📋 Pull Request Process
 
@@ -217,11 +219,36 @@ Avant de soumettre votre Pull Request :
 - [ ] Pas de conflits avec la branche cible
 - [ ] Code reviewé personnellement
 
+### 🛡️ Checklist Antifragilité (PRs Critiques)
+
+Pour les PRs de **niveau Critique ou Important**, consultez également :
+- [ ] [Matrice d'Acceptation des PRs](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/02_STRATEGIE_GESTION_PROJET.md#11-checklist-obligatoire-pour-toute-pr)
+- [ ] [Template PR Antifragile](./.github/PULL_REQUEST_TEMPLATE/antifragile_pr_template.md)
+- [ ] Analyse des risques et plans de mitigation documentés
+- [ ] Plan de rollback défini
+- [ ] Métriques et monitoring configurés
+
 ## 🆘 Besoin d'aide ?
 
 - Consultez les [Issues](../../issues) existantes
 - Référez-vous à la [documentation](./README.md)
 - Consultez la [gouvernance](./00_GOVERNANCE.md)
+- 🆕 Découvrez le [Framework Antifragilité](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/)
+
+## 📚 Ressources Additionnelles
+
+### Framework Antifragilité
+Ce projet intègre un framework complet pour transformer les contraintes en opportunités :
+
+1. **[Brainstorming Antifragile](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/01_BRAINSTORMING_ANTIFRAGILE.md)** : Identification des risques et opportunités
+2. **[Stratégie de Gestion](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/02_STRATEGIE_GESTION_PROJET.md)** : Processus et rôles pour les PRs
+3. **[Architecture de Solution](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/03_ARCHITECTURE_SOLUTION.md)** : Patterns de résilience technique
+4. **[Guide d'Implémentation](./03_RESOURCES/ANTIFRAGILITY_FRAMEWORK/04_IMPLEMENTATION_GUIDE.md)** : Templates et outils pratiques
+
+**Recommandé pour** :
+- 🔴 PRs critiques (hotfix, sécurité)
+- 🟡 Changements architecturaux majeurs
+- 🟢 Nouvelles fonctionnalités importantes
 
 ## 📜 License & Droits
 
