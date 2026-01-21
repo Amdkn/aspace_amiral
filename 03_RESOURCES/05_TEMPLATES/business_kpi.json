@@ -19,6 +19,16 @@
             "timestamp": "2026-01-21T09:13:23.711997",
             "metric": "manual_cli_test",
             "value": 123.45
+        },
+        {
+            "timestamp": "2026-01-21T09:17:04.308274",
+            "metric": "manual_verification",
+            "value": 100
+        },
+        {
+            "timestamp": "2026-01-21T09:17:04.360164",
+            "metric": "manual_cli_test",
+            "value": 123.45
         }
     ]
 }
