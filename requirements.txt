@@ -1,0 +1,14 @@
+# A'Space OS - Amiral Requirements
+# Python Standard Library Only (No external dependencies)
+# Python >= 3.8
+
+# Note: This project currently uses only Python standard library modules
+# All dependencies are built-in to Python 3.8+:
+# - json, os, sys, argparse, subprocess, unittest, datetime, time, urllib
+
+# Platform-specific:
+# - msvcrt (Windows only - for file locking in pulse_logger.py)
+#   On Linux/macOS, this will need to be replaced with fcntl
+
+# Future dependencies should be added here with version pins:
+# example-package==1.0.0
