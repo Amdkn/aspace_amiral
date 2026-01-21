@@ -1,6 +1,13 @@
 import React from 'react';
 import { osDefinitions } from '../data/osDefinitions';
 
+// Color class mapping for Tailwind purge safety
+const colorClasses = {
+  solar: 'bg-gradient-to-br from-solar-400 to-solar-600',
+  nature: 'bg-gradient-to-br from-nature-400 to-nature-600',
+  sky: 'bg-gradient-to-br from-sky-400 to-sky-600',
+};
+
 // Dock Component - Floating navigation bar
 // Inspired by macOS dock & os.ryo.lu
 // BMAD: Simple, Modular, Beautiful
@@ -16,7 +23,7 @@ export const Dock = ({ onOpenWindow }) => {
               group relative
               w-14 h-14 
               rounded-xl 
-              bg-gradient-to-br from-${os.color}-400 to-${os.color}-600
+              ${colorClasses[os.color] || colorClasses.sky}
               hover:scale-110 
               active:scale-95
               transition-all duration-200 ease-out

@@ -4,7 +4,7 @@ import { Dashboard } from './Dashboard';
 // Window Component - Draggable, Resizable, Modular
 // BMAD: Independent, Self-contained, Testable
 export const Window = ({
-  window,
+  window: windowState,
   onClose,
   onMinimize,
   onFocus,
@@ -22,9 +22,9 @@ export const Window = ({
     const handleMouseMove = (e) => {
       const newX = e.clientX - dragOffset.x;
       const newY = e.clientY - dragOffset.y;
-      onUpdatePosition(window.id, {
-        x: Math.max(0, Math.min(newX, window.innerWidth - 200)),
-        y: Math.max(0, Math.min(newY, window.innerHeight - 200)),
+      onUpdatePosition(windowState.id, {
+        x: Math.max(0, Math.min(newX, globalThis.innerWidth - 200)),
+        y: Math.max(0, Math.min(newY, globalThis.innerHeight - 200)),
       });
     };
 
@@ -39,17 +39,16 @@ export const Window = ({
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDragging, dragOffset, window.id, onUpdatePosition]);
+  }, [isDragging, dragOffset, windowState.id, onUpdatePosition]);
 
   const handleMouseDown = (e) => {
     if (e.target === headerRef.current || headerRef.current.contains(e.target)) {
       setIsDragging(true);
       setDragOffset({
-        x: e.clientX - window.position.x,
-        y: e.clientY - window.position.y,
+        x: e.clientX - windowState.position.x,
+        y: e.clientY - windowState.position.y,
       });
-      onFocus(window.id);
+      onFocus(windowState.id);
     }
   };
 
@@ -59,9 +58,9 @@ export const Window = ({
     sky: 'from-sky-500 to-sky-600',
   };
 
-  const gradientClass = colorClasses[window.osDefinition.color] || colorClasses.sky;
+  const gradientClass = colorClasses[windowState.osDefinition.color] || colorClasses.sky;
 
-  if (window.isMinimized) {
+  if (windowState.isMinimized) {
     return null;
   }
 
@@ -70,13 +69,13 @@ export const Window = ({
       ref={windowRef}
       className="fixed glass rounded-xl overflow-hidden shadow-2xl"
       style={{
-        left: `${window.position.x}px`,
-        top: `${window.position.y}px`,
-        width: `${window.size.width}px`,
-        height: `${window.size.height}px`,
-        zIndex: window.zIndex,
+        left: `${windowState.position.x}px`,
+        top: `${windowState.position.y}px`,
+        width: `${windowState.size.width}px`,
+        height: `${windowState.size.height}px`,
+        zIndex: windowState.zIndex,
       }}
-      onMouseDown={() => onFocus(window.id)}
+      onMouseDown={() => onFocus(windowState.id)}
     >
       {/* Window Header */}
       <div
@@ -91,9 +90,9 @@ export const Window = ({
         onMouseDown={handleMouseDown}
       >
         <div className="flex items-center gap-2">
-          <span className="text-2xl">{window.osDefinition.icon}</span>
+          <span className="text-2xl">{windowState.osDefinition.icon}</span>
           <h3 className="text-white font-semibold">
-            {window.osDefinition.name}
+            {windowState.osDefinition.name}
           </h3>
         </div>
         
@@ -102,7 +101,7 @@ export const Window = ({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onMinimize(window.id);
+              onMinimize(windowState.id);
             }}
             className="w-6 h-6 rounded-full bg-yellow-400 hover:bg-yellow-500 transition-colors flex items-center justify-center text-xs font-bold text-white"
             title="Minimize"
@@ -114,7 +113,7 @@ export const Window = ({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onClose(window.id);
+              onClose(windowState.id);
             }}
             className="w-6 h-6 rounded-full bg-red-400 hover:bg-red-500 transition-colors flex items-center justify-center text-xs font-bold text-white"
             title="Close"
@@ -126,13 +125,13 @@ export const Window = ({
 
       {/* Window Content */}
       <div className="bg-white/90 h-[calc(100%-48px)] overflow-hidden">
-        {window.osDefinition.type === 'internal' ? (
-          <Dashboard osId={window.osId} />
+        {windowState.osDefinition.type === 'internal' ? (
+          <Dashboard osId={windowState.osId} />
         ) : (
           <iframe
-            src={window.osDefinition.defaultUrl}
+            src={windowState.osDefinition.defaultUrl}
             className="w-full h-full border-0"
-            title={window.osDefinition.name}
+            title={windowState.osDefinition.name}
             sandbox="allow-same-origin allow-scripts allow-forms"
           />
         )}
