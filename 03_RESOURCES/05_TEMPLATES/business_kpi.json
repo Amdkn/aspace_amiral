@@ -1,84 +1,12 @@
 {
-    "business_pulse": {
-        "status": "GREEN",
-        "active_goals": [
-            "R0_Mastery",
-            "Docker_Integration"
-        ],
-        "last_visionary_check": "2026-01-14"
-    },
-    "life_os": {
-        "agent_mood": "Focus",
-        "system_integrity": "Optimal"
-    },
     "pulses": [
         {
-            "timestamp": "2026-01-15T00:51:26.090679",
+            "timestamp": "2026-01-21T07:58:31.525267",
             "metric": "manual_verification",
             "value": 100
         },
         {
-            "timestamp": "2026-01-15T05:54:30.690397",
-            "metric": "manual_verification",
-            "value": 100
-        },
-        {
-            "timestamp": "2026-01-15T05:55:53.651784",
-            "metric": "test",
-            "value": 10.0
-        },
-        {
-            "timestamp": "2026-01-15T06:00:21.123227",
-            "metric": "manual_cli_test",
-            "value": 123.45
-        },
-        {
-            "timestamp": "2026-01-15T01:01:07.142328",
-            "metric": "manual_cli_test",
-            "value": 123.45
-        },
-        {
-            "timestamp": "2026-01-15T01:01:12.389562",
-            "metric": "revenue",
-            "value": 500.0
-        },
-        {
-            "timestamp": "2026-01-15T06:03:56.442387",
-            "metric": "manual_cli_test",
-            "value": 123.45
-        },
-        {
-            "timestamp": "2026-01-15T06:04:30.836131",
-            "metric": "revenue",
-            "value": 500.0
-        },
-        {
-            "timestamp": "2026-01-21T00:13:44.080427",
-            "metric": "manual_verification",
-            "value": 100
-        },
-        {
-            "timestamp": "2026-01-21T00:13:44.107323",
-            "metric": "manual_cli_test",
-            "value": 123.45
-        },
-        {
-            "timestamp": "2026-01-21T00:15:53.812495",
-            "metric": "manual_verification",
-            "value": 100
-        },
-        {
-            "timestamp": "2026-01-21T00:15:53.863489",
-            "metric": "manual_cli_test",
-            "value": 123.45
-        },
-        {
-            "timestamp": "2026-01-21T00:18:31.591283",
-            "metric": "manual_verification",
-            "value": 100
-        },
-        {
-            "timestamp": "2026-01-21T00:18:31.642682",
+            "timestamp": "2026-01-21T07:58:31.551860",
             "metric": "manual_cli_test",
             "value": 123.45
         }
