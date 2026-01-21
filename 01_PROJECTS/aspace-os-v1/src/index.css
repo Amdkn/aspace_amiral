@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #f0f9ff, #f7fee7, #f0fdf4);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Solarpunk Glass Morphism */
+.glass {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.glass-dark {
+  backdrop-filter: blur(12px);
+  background-color: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(55, 65, 81, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Drag utilities */
+.drag-handle {
+  cursor: move;
+  cursor: grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
