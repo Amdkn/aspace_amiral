@@ -24,9 +24,10 @@ def log_pulse(metric, value):
 
     with open(KPI_FILE, 'r+') as f:
         # Cross-platform file locking
+        lock_size = 10 * 1024 * 1024  # 10MB - defined for both platforms
+        
         if sys.platform == 'win32':
             # Windows: Lock the first 10MB of the file (plenty for this JSON)
-            lock_size = 10 * 1024 * 1024
             # LK_LOCK: Locks the specified bytes. If the bytes cannot be locked, 
             # the program immediately tries again after 1 second and continues 
             # to try until the bytes can be locked.

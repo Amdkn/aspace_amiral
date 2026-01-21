@@ -38,7 +38,7 @@ log_pulse("revenue", 1500.50)
 
 ## Platform Notes
 - **Windows**: Uses `msvcrt` for file locking
-- **Linux/macOS**: Will need `fcntl` implementation (TODO)
+- **Linux/macOS**: Uses `fcntl` for file locking (implemented)
 
 ---
 **Status:** Phase 1 - Anti-fragile Foundation
