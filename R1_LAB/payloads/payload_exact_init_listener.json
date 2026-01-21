@@ -1,0 +1,24 @@
+{
+    "meta": {
+        "source": "AMADEUS_A0",
+        "environment": "R1_LAB",
+        "timestamp": "2026-01-19T18:30:00Z",
+        "intent_id": "INIT_LISTENER_ZERO"
+    },
+    "intent": {
+        "type": "KERNEL_COMMAND",
+        "action": "REGISTER_LISTENER",
+        "target": "R2_KERNEL",
+        "priority": "CONSTITUTIONAL"
+    },
+    "payload": {
+        "listener_name": "AMADEUS_LISTENER",
+        "version": "v1.0",
+        "accepted_intents": [
+            "KERNEL_COMMAND",
+            "LIFE_SIGNAL",
+            "BIZ_SIGNAL"
+        ],
+        "promotion_rule": "SUNDAY_UPLINK_ONLY"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "meta": {
+        "source": "AMADEUS_A0",
+        "environment": "R1_LOCAL",
+        "timestamp": "2026-01-18T00:00:00Z"
+    },
+    "intent": "INIT_SUNDAY_UPLINK",
+    "scope": "KERNEL",
+    "command": {
+        "action": "INIT_LISTENER",
+        "version": "v1",
+        "promote_to": "R2"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "meta": {
+        "source": "AMADEUS_A0",
+        "environment": "R1_LOCAL"
+    },
+    "intent": "HANDSHAKE",
+    "scope": "KERNEL",
+    "command": {
+        "action": "PING_GUARDIAN",
+        "nonce": "boot-001"
+    }
+}

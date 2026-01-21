@@ -1,0 +1,75 @@
+{
+    "name": "R1_EXPERIMENTAL_HEALTH_PING",
+    "nodes": [
+        {
+            "parameters": {},
+            "name": "Start",
+            "type": "n8n-nodes-base.start",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "values": {
+                    "string": [
+                        {
+                            "name": "status",
+                            "value": "R1_ALIVE"
+                        },
+                        {
+                            "name": "message",
+                            "value": "Hello from the Lab!"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "name": "Set Mock Data",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "content": "={{$json[\"message\"]}} - Status: {{$json[\"status\"]}}"
+            },
+            "name": "Log Output",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                650,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Start": {
+            "main": [
+                [
+                    {
+                        "node": "Set Mock Data",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Set Mock Data": {
+            "main": [
+                [
+                    {
+                        "node": "Log Output",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

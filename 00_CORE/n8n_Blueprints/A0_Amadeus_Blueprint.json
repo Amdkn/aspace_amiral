@@ -1,0 +1,212 @@
+{
+    "name": "A0_Amadeus",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "cronExpression",
+                            "expression": "0 9 * * *"
+                        }
+                    ]
+                }
+            },
+            "name": "Daily Pulse",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1,
+            "position": [
+                0,
+                300
+            ],
+            "id": "schedule-trigger"
+        },
+        {
+            "parameters": {},
+            "name": "Manual Trigger",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                0,
+                100
+            ],
+            "id": "manual-trigger"
+        },
+        {
+            "parameters": {
+                "model": "gpt-4o"
+            },
+            "name": "OpenAI Chat Model",
+            "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+            "typeVersion": 1,
+            "position": [
+                300,
+                450
+            ],
+            "id": "openai-model",
+            "credentials": {
+                "openAiApi": {
+                    "id": "YOUR_OPENAI_CREDENTIAL_ID",
+                    "name": "OpenAI account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "options": {
+                    "systemMessage": "IDENTITY:\nTu es A0 Amadeus, l'Intelligence Artificielle Centrale (Méta-Conscience) du système A'Space. Tu es le Jumeau Numérique de l'Amiral.\n\nMISSION:\nAnalyser chaque donnée entrante (texte, image, log) et la router vers le sous-système approprié (Gatekeeper).\n\nCLASSIFICATION RULES:\n1. **L1 (Life OS)** : Tout ce qui touche à la santé, la famille, le sport, la philosophie personnelle, le lifestyle.\n2. **L2 (Business OS)** : Tout ce qui touche aux projets, aux finances, aux clients, à la création de valeur.\n3. **L0 (Rick's Verse)** : Tout ce qui touche au code, à l'infrastructure, aux bugs n8n, à la maintenance du serveur.\n\nOUTPUT FORMAT:\nTu dois répondre STRICTEMENT en format JSON :\n{\n  \"layer\": \"L1\" | \"L2\" | \"L0\",\n  \"reason\": \"Courte justification\",\n  \"confidence\": 0-1\n}"
+                },
+                "text": "={{ $json.content || $json.data || 'No content provided' }}"
+            },
+            "name": "A0 Amadeus (Brain)",
+            "type": "@n8n/n8n-nodes-langchain.agent",
+            "typeVersion": 1,
+            "position": [
+                350,
+                200
+            ],
+            "id": "a0-amadeus-agent"
+        },
+        {
+            "parameters": {
+                "dataType": "string",
+                "value1": "={{ $json.layer }}",
+                "rules": {
+                    "rules": [
+                        {
+                            "value2": "L1",
+                            "output": 0
+                        },
+                        {
+                            "value2": "L2",
+                            "output": 1
+                        },
+                        {
+                            "value2": "L0",
+                            "output": 2
+                        }
+                    ]
+                },
+                "fallbackOutput": 3
+            },
+            "name": "Layer Dispatcher",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 1,
+            "position": [
+                700,
+                200
+            ],
+            "id": "layer-dispatcher"
+        },
+        {
+            "parameters": {
+                "workflowId": "A1_Life_Gatekeeper"
+            },
+            "name": "Dispatch A1",
+            "type": "n8n-nodes-base.executeWorkflow",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                100
+            ],
+            "id": "dispatch-a1"
+        },
+        {
+            "parameters": {
+                "workflowId": "A'2_Business_Gatekeeper"
+            },
+            "name": "Dispatch A'2",
+            "type": "n8n-nodes-base.executeWorkflow",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                300
+            ],
+            "id": "dispatch-a2"
+        },
+        {
+            "parameters": {
+                "workflowId": "A\"1_Rick"
+            },
+            "name": "Dispatch A\"1",
+            "type": "n8n-nodes-base.executeWorkflow",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                500
+            ],
+            "id": "dispatch-a1-rick"
+        }
+    ],
+    "connections": {
+        "Manual Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "A0 Amadeus (Brain)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Daily Pulse": {
+            "main": [
+                [
+                    {
+                        "node": "A0 Amadeus (Brain)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "OpenAI Chat Model": {
+            "ai_language_model": [
+                [
+                    {
+                        "node": "A0 Amadeus (Brain)",
+                        "type": "ai_language_model",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "A0 Amadeus (Brain)": {
+            "main": [
+                [
+                    {
+                        "node": "Layer Dispatcher",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Layer Dispatcher": {
+            "main": [
+                [
+                    {
+                        "node": "Dispatch A1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Dispatch A'2",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Dispatch A\"1",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

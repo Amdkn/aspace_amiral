@@ -1,0 +1,246 @@
+{
+    "name": "COMPANION_ZERO_A3_CANON",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "constitution-uplink",
+                "options": {
+                    "rawBody": true
+                }
+            },
+            "name": "0. TRIGGER - Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ],
+            "notes": "0. TRIGGER — WEBHOOK /constitution-uplink"
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{$json.body.source}}",
+                            "operation": "equal",
+                            "value2": "13TH_DOCTOR"
+                        }
+                    ]
+                }
+            },
+            "name": "1. CONSTITUTION VALIDATOR",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ],
+            "notes": "1. NODE — CONSTITUTION VALIDATOR"
+        },
+        {
+            "parameters": {
+                "value": "={{$json.body.type}}",
+                "rules": {
+                    "rules": [
+                        {
+                            "value": "LIFE_SIGNAL",
+                            "output": 0
+                        },
+                        {
+                            "value": "BIZ_METRIC",
+                            "output": 1
+                        },
+                        {
+                            "value": "KERNEL_ALERT",
+                            "output": 2
+                        }
+                    ]
+                }
+            },
+            "name": "2. THE SORTING HAT",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 1,
+            "position": [
+                700,
+                300
+            ],
+            "notes": "2. NODE — THE SORTING HAT (Switch)"
+        },
+        {
+            "parameters": {
+                "content": "ROUTE S1 — LIFE OS (Starfleet)\nObserve, Journalize, Protect\nDest: Notion / Markdown / Life Signals\nNo System Action"
+            },
+            "name": "ROUTE S1 (LIFE)",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "content": "ROUTE S2 — BUSINESS OS (Justice League)\nDest: Supabase business_pulse\nCheck: Rate Limit, Beth TTL, Budget\nWarning: Escalates to KERNEL_ALERT if overloaded"
+            },
+            "name": "ROUTE S2 (BUSINESS)",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "content": "ROUTE S3 — KERNEL ALERT (Rick Only)\nDest: Rick Sovereign Channel\nTrigger: Critical Dependency, Abnormal Load, Idempotence Break\nRule: Only Rick decides."
+            },
+            "name": "ROUTE S3 (KERNEL)",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                500
+            ]
+        },
+        {
+            "parameters": {
+                "content": "3. NODE — AUDIT LOGGER\nWrite: trace_id, timestamp, decision, impact\nFor: Graham (Audit), Yaz (Monitor), Ryan (Borders)"
+            },
+            "name": "3. AUDIT LOGGER",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1300,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "statusCode": 200,
+                "jsonResponseBody": "{\n  \"status\": \"ACKNOWLEDGED\",\n  \"kernel_state\": \"STABLE\",\n  \"trace_id\": \"={{$node[\"0. TRIGGER - Webhook\"].json.body.trace_id}}\"\n}"
+            },
+            "name": "4. RESPONSE (200 OK)",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                1600,
+                300
+            ],
+            "notes": "4. RESPONSE — 200 OK | SYSTEM STABLE"
+        },
+        {
+            "parameters": {
+                "content": "DROP / QUARANTINE"
+            },
+            "name": "DROP",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                450,
+                500
+            ]
+        }
+    ],
+    "connections": {
+        "0. TRIGGER - Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "1. CONSTITUTION VALIDATOR",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "1. CONSTITUTION VALIDATOR": {
+            "main": [
+                [
+                    {
+                        "node": "2. THE SORTING HAT",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "DROP",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "2. THE SORTING HAT": {
+            "main": [
+                [
+                    {
+                        "node": "ROUTE S1 (LIFE)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "ROUTE S2 (BUSINESS)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "ROUTE S3 (KERNEL)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "ROUTE S1 (LIFE)": {
+            "main": [
+                [
+                    {
+                        "node": "3. AUDIT LOGGER",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "ROUTE S2 (BUSINESS)": {
+            "main": [
+                [
+                    {
+                        "node": "3. AUDIT LOGGER",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "ROUTE S3 (KERNEL)": {
+            "main": [
+                [
+                    {
+                        "node": "3. AUDIT LOGGER",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "3. AUDIT LOGGER": {
+            "main": [
+                [
+                    {
+                        "node": "4. RESPONSE (200 OK)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

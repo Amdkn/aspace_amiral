@@ -1,0 +1,72 @@
+{
+  "name": "00_Master_Template_v2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "uplink/:agent_id",
+        "options": {}
+      },
+      "name": "Jules_Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Context7 check\n// Verify README.md in Vector Store\nreturn items;"
+      },
+      "name": "Context7_Check",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ralph Loop check\n// Idempotency hash check\nreturn items;"
+      },
+      "name": "Ralph_Idempotency",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "={{ $json.layer }}", "type": "string" },
+                "conditions": [ { "value": "L0", "operator": "equal" } ]
+              },
+              "outputIndex": 0
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "={{ $json.layer }}", "type": "string" },
+                "conditions": [ { "value": "L1", "operator": "equal" } ]
+              },
+              "outputIndex": 1
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "={{ $json.layer }}", "type": "string" },
+                "conditions": [ { "value": "L2", "operator": "equal" } ]
+              },
+              "outputIndex": 2
+            }
+          ]
+        }
+      },
+      "name": "Sorting_Hat",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Jules_Webhook": { "main": [ [ { "node": "Context7_Check", "type": "main", "index": 0 } ] ] },
+    "Context7_Check": { "main": [ [ { "node": "Ralph_Idempotency", "type": "main", "index": 0 } ] ] },
+    "Ralph_Idempotency": { "main": [ [ { "node": "Sorting_Hat", "type": "main", "index": 0 } ] ] }
+  }
+}

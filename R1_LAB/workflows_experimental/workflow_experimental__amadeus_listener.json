@@ -1,0 +1,261 @@
+{
+    "name": "AMADEUS_LISTENER_TARDIS_PROTOCOL",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "amadeus-uplink",
+                "options": {
+                    "rawBody": true
+                }
+            },
+            "name": "Webhook (POST)",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ],
+            "notes": "1. Webhook (POST) /amadeus-uplink"
+        },
+        {
+            "parameters": {
+                "values": {
+                    "string": [
+                        {
+                            "name": "raw_body_preserved",
+                            "value": "={{$json.body}}"
+                        },
+                        {
+                            "name": "headers_preserved",
+                            "value": "={{$json.headers}}"
+                        }
+                    ]
+                }
+            },
+            "name": "Set - Raw Body",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 1,
+            "position": [
+                400,
+                300
+            ],
+            "notes": "2. Set - Raw Body (Keep JSON, Store headers)"
+        },
+        {
+            "parameters": {
+                "functionCode": "// 3. Function - HMAC Verify\nconst crypto = require('crypto');\nconst secret = 'RICKS_VERSE_CANON_13_DOCTOR_V1';\nconst receivedSignature = items[0].json.headers['x-amadeus-signature']; // Canonical Header Name\nconst rawBody = items[0].binary ? items[0].binary.data : JSON.stringify(items[0].json.body);\n\n// Note: This matches the Checklist Node 3\n\nconst hmac = crypto.createHmac('sha256', secret);\nhmac.update(rawBody);\nconst calculatedSignature = hmac.digest('hex'); // Checklist says <hex_hmac>, assuming no 'sha256=' prefix based on prompt example\n\nif (receivedSignature !== calculatedSignature) {\n  throw new Error('HMAC_MISMATCH');\n}\nreturn items;"
+            },
+            "name": "Function - HMAC Verify",
+            "type": "n8n-nodes-base.function",
+            "typeVersion": 1,
+            "position": [
+                600,
+                300
+            ],
+            "notes": "3. Function - HMAC Verify"
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{$json.body.meta.source}}",
+                            "operation": "equal",
+                            "value2": "AMADEUS_A0"
+                        }
+                    ]
+                }
+            },
+            "name": "IF - Source Check",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                800,
+                300
+            ],
+            "notes": "4. IF - Source Check"
+        },
+        {
+            "parameters": {
+                "value": "={{$json.body.intent}}",
+                "rules": {
+                    "rules": [
+                        {
+                            "value": "INIT_SUNDAY_UPLINK",
+                            "output": 0
+                        },
+                        {
+                            "value": "KERNEL_ALERT",
+                            "output": 1
+                        },
+                        {
+                            "value": "PROMOTE_WORKFLOW",
+                            "output": 2
+                        }
+                    ]
+                }
+            },
+            "name": "Switch - Intent Router",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 1,
+            "position": [
+                1000,
+                300
+            ],
+            "notes": "5. Switch - Intent Router"
+        },
+        {
+            "parameters": {
+                "content": "Target: Kernel workflows (A\"3)"
+            },
+            "name": "Execute Workflow",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1200,
+                200
+            ],
+            "notes": "6. Execute Workflow"
+        },
+        {
+            "parameters": {
+                "content": "Path: /kernel_logs/amadeus.log (Append Mode)"
+            },
+            "name": "Write Binary File",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1400,
+                300
+            ],
+            "notes": "7. Write Binary File"
+        },
+        {
+            "parameters": {
+                "statusCode": 200,
+                "jsonResponseBody": "{\n  \"status\": \"KERNEL_STABLE\"\n}"
+            },
+            "name": "Respond to Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                1600,
+                300
+            ],
+            "notes": "8. Respond to Webhook"
+        },
+        {
+            "parameters": {
+                "content": "Drop: Source Check Failed"
+            },
+            "name": "Drop",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                800,
+                500
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook (POST)": {
+            "main": [
+                [
+                    {
+                        "node": "Set - Raw Body",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Set - Raw Body": {
+            "main": [
+                [
+                    {
+                        "node": "Function - HMAC Verify",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Function - HMAC Verify": {
+            "main": [
+                [
+                    {
+                        "node": "IF - Source Check",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "IF - Source Check": {
+            "main": [
+                [
+                    {
+                        "node": "Switch - Intent Router",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Drop",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Switch - Intent Router": {
+            "main": [
+                [
+                    {
+                        "node": "Execute Workflow",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Execute Workflow",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Execute Workflow",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Execute Workflow": {
+            "main": [
+                [
+                    {
+                        "node": "Write Binary File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Write Binary File": {
+            "main": [
+                [
+                    {
+                        "node": "Respond to Webhook",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}
