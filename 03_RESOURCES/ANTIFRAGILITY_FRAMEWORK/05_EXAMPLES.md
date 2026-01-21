@@ -88,6 +88,7 @@ class PaymentServiceInterface(ABC):
 # payment/stripe_adapter.py
 import stripe
 import time
+import random
 from typing import Optional
 from decimal import Decimal
 from .interfaces import PaymentServiceInterface, PaymentResult
