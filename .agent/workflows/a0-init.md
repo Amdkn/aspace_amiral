@@ -11,8 +11,8 @@ description: MASTER WORKFLOW - Initialisation du Vaisseau A'Space (Morning Start
 ## 1. 🧠 PHASE A0 : CHARGEMENT DU CERVEAU (Amadeus)
 **Action :** Initialisation de la Méta-Conscience.
 1. Charge les règles `AMADEUS_A0.md` et `RICK_VERSE.md`.
-2. **Auto-Instantiation :** Vérifie l'existence des dossiers `.agent/doctors/`. Si absents, crée `13th_doctor_kernel`, `11th_doctor_life`, `12th_doctor_business`.
-3. Vérifie les secrets dans `.env` (N8N_API_KEY).
+2. **Auto-Instantiation :** Vérifie l'existence des dossiers `.agent/doctors/`. **SI** absents, crée `13th_doctor_kernel`, `11th_doctor_life`, `12th_doctor_business`.
+3. Vérifie les secrets dans `.env` (N8N_API_KEY). **SI** vide ou absent, alerte l'Amiral.
 
 ## 2. 🧬 PHASE L1 : AUDIT DE CONSCIENCE (Beth)
 **Action :** Analyse de l'état mental et des signaux vitaux.

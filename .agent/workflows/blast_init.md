@@ -8,7 +8,7 @@ Ce workflow transforme une idée vague en architecture solide.
 
 ## Étape 1 : Blueprint (La Vision)
 1.  Demander : "Quelle est la 'North Star' de ce système ?"
-2.  Créer le fichier `gemini.md` avec la structure du projet.
+2.  **Vérification :** SI `gemini.md` existe déjà, demander : "Faut-il écraser ou mettre à jour ?" Sinon, créer le fichier.
 3.  Définir la "Source of Truth" (ex: Notion Database).
 
 ## Étape 2 : Link & Architect (Le Corps)

@@ -14,7 +14,10 @@
 | **A"2** | **13th Doctor** | **Core Arch.** | Infrastructure, Factory, Protocole Tardis. | **Hostinger**, **Coolify**, **N8N**, Gemini CLI. |
 | **A"2** | **11th Doctor** | **Life Arch.** | Architecture Life OS (Santé, Mental). | **Dart**, **Notion**, Airtable. |
 | **A"2** | **12th Doctor** | **Biz Arch.** | Architecture Business OS (Finance, Ops). | **ClickUp**, **Supabase**, Stripe. |
-| **A"3** | **Companions** | **Ouvriers** | Exécution de scripts, maintenance, itération. | Scripts Python, Bash, Webhooks N8N. |
+| **A"3** | **Companions** | **Agents** | **Groundworks & Execution** | Scripts, Webhooks, Kanban. |
+| *13th* | *Tech Team* | Graham, Ryan, Yaz | Infrastructure & Groundwork. | VPS, Docker, N8N, Bridge. |
+| *11th* | *Life Team* | Amy, Rory, River | Personal Optimization. | Notion, Dart, Airtable. |
+| *12th* | *Biz Team* | Clara, Bill, Nardole | Value Creation. | ClickUp, Supabase, Stripe. |
 
 ---
 

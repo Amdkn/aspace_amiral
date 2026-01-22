@@ -17,6 +17,7 @@ It follows the **Simple Loop Architecture**:
 -   **Context**: You represent the **Conductor**.
 -   **Bridge**: Use `ralph_bridge` skill to delegate work to Ralph.
 -   **Source**: Consult `bmad_context.md` skill for file standards.
+-   **Design**: Apply `stitch-design` standards for all UI/Frontend tasks.
 
 ## 🚀 Quick Start
 To execute a task:
